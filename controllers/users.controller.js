@@ -80,6 +80,14 @@ const login = async (req, res, next) => {
     });
   }
 
+  if (!user.verify) {
+    return res.status(401).json({
+      status: "Unauthorized",
+      code: 401,
+      message: "Please verify Your account first",
+  });
+  } 
+
   const payload = {
     id: user.id,
   };
