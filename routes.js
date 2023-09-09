@@ -21,4 +21,9 @@ router.get("/users/logout", auth, usersController.logout);
 router.get("/users/current", auth, usersController.current);
 router.patch('/avatars', auth, uploadMiddleware.single('avatar'), usersController.updateAvatar);
 
+
+router.get('/users/verify/:verificationToken',usersController.verify)
+
+router.post('/users/verify', usersController.resendVerificationMail)
+
 module.exports = router;
